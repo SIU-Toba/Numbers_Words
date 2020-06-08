@@ -23,19 +23,18 @@
  */
 
 /**
- * Class for translating numbers into Donald Knuth system, in English language.
+ * Class for translating numbers into British English.
  *
  * @author Piotr Klaban
  * @package Numbers_Words
  */
 
-/**
- * Include needed files
- */
-require_once "Numbers/Words.php";
+namespace Numbers\Words\Locale;
+
+use Numbers\Words as Numbers_Words;
 
 /**
- * Class for translating numbers into Donald Knuth system, in English language.
+ * Class for translating numbers into British English.
  *
  * @category Numbers
  * @package  Numbers_Words
@@ -43,7 +42,7 @@ require_once "Numbers/Words.php";
  * @license  PHP 3.01 http://www.php.net/license/3_01.txt
  * @link     http://pear.php.net/package/Numbers_Words
  */
-class Numbers_Words_Locale_en_100 extends Numbers_Words
+class Numbers_Words_Locale_en_GB extends Numbers_Words
 {
 
     // {{{ properties
@@ -53,21 +52,21 @@ class Numbers_Words_Locale_en_100 extends Numbers_Words
      * @var string
      * @access public
      */
-    var $locale = 'en_100';
+    var $locale = 'en_GB';
 
     /**
      * Language name in English
      * @var string
      * @access public
      */
-    var $lang = 'English (Donald Knuth system)';
+    var $lang = 'British English';
 
     /**
      * Native language name
      * @var string
      * @access public
      */
-    var $lang_native = 'English (Donald Knuth system)';
+    var $lang_native = 'British English';
 
     /**
      * The word for the minus sign
@@ -78,36 +77,36 @@ class Numbers_Words_Locale_en_100 extends Numbers_Words
 
     /**
      * The sufixes for exponents (singular and plural)
-     * Names based on:
-     * http://home.earthlink.net/~mrob/pub/math/largenum.html
-     * Donald Knuth system (power of 2)
+     * Names partly based on:
+     * http://www.users.dircon.co.uk/~shaunf/shaun/numbers/millions.htm
      * @var array
      * @access private
      */
     var $_exponent = array(
         0 => array(''),
-        2 => array('hundred'),
-        4 => array('myriad'),
-        8 => array('myllion'),
-       16 => array('byllion'),
-       32 => array('tryllion'),
-       64 => array('quadryllion'),
-      128 => array('quintyllion'),
-      256 => array('sextyllion'),
-      512 => array('septyllion'),
-     1024 => array('octyllion'),
-     2048 => array('nonyllion'),
-     4096 => array('decyllion'),
-     8192 => array('undecyllion'),
-    16384 => array('duodecyllion'),
-    32768 => array('tredecyllion'),
-    65536 => array('quattuordecyllion'),
-   131072 => array('quindecyllion'),
-   262144 => array('sexdecyllion'),
-   524288 => array('septendecyllion'),
-  1048576 => array('octodecyllion'),
-  2097152 => array('novemdecyllion'),
-  4194304 => array('vigintyllion')
+        3 => array('thousand'),
+        6 => array('million'),
+       12 => array('billion'),
+       18 => array('trillion'),
+       24 => array('quadrillion'),
+       30 => array('quintillion'),
+       36 => array('sextillion'),
+       42 => array('septillion'),
+       48 => array('octillion'),
+       54 => array('nonillion'),
+       60 => array('decillion'),
+       66 => array('undecillion'),
+       72 => array('duodecillion'),
+       78 => array('tredecillion'),
+       84 => array('quattuordecillion'),
+       90 => array('quindecillion'),
+       96 => array('sexdecillion'),
+      102 => array('septendecillion'),
+      108 => array('octodecillion'),
+      114 => array('novemdecillion'),
+      120 => array('vigintillion'),
+      192 => array('duotrigintillion'),
+      600 => array('centillion')
         );
 
     /**
@@ -126,12 +125,69 @@ class Numbers_Words_Locale_en_100 extends Numbers_Words
      * @access private
      */
     var $_sep = ' ';
+
+    /**
+     * The currency names (based on the below links,
+     * informations from central bank websites and on encyclopedias)
+     *
+     * @var array
+     * @link http://30-03-67.dreamstation.com/currency_alfa.htm World Currency Information
+     * @link http://www.jhall.demon.co.uk/currency/by_abbrev.html World currencies
+     * @link http://www.shoestring.co.kr/world/p.visa/change.htm Currency names in English
+     * @access private
+     */
+    var $_currency_names = array(
+      'ALL' => array(array('lek'), array('qindarka')),
+      'AUD' => array(array('Australian dollar'), array('cent')),
+      'BAM' => array(array('convertible marka'), array('fenig')),
+      'BGN' => array(array('lev'), array('stotinka')),
+      'BRL' => array(array('real'), array('centavos')),
+      'BYR' => array(array('Belarussian rouble'), array('kopiejka')),
+      'CAD' => array(array('Canadian dollar'), array('cent')),
+      'CHF' => array(array('Swiss franc'), array('rapp')),
+      'CYP' => array(array('Cypriot pound'), array('cent')),
+      'CZK' => array(array('Czech koruna'), array('halerz')),
+      'DKK' => array(array('Danish krone'), array('ore')),
+      'EEK' => array(array('kroon'), array('senti')),
+      'EUR' => array(array('euro'), array('euro-cent')),
+      'GBP' => array(array('pound', 'pounds'), array('pence', 'pence')),
+      'HKD' => array(array('Hong Kong dollar'), array('cent')),
+      'HRK' => array(array('Croatian kuna'), array('lipa')),
+      'HUF' => array(array('forint'), array('filler')),
+      'ILS' => array(array('new sheqel','new sheqels'), array('agora','agorot')),
+      'ISK' => array(array('Icelandic króna'), array('aurar')),
+      'JPY' => array(array('yen'), array('sen')),
+      'LTL' => array(array('litas'), array('cent')),
+      'LVL' => array(array('lat'), array('sentim')),
+      'MKD' => array(array('Macedonian dinar'), array('deni')),
+      'MTL' => array(array('Maltese lira'), array('centym')),
+      'NOK' => array(array('Norwegian krone'), array('oere')),
+      'PLN' => array(array('zloty', 'zlotys'), array('grosz')),
+      'ROL' => array(array('Romanian leu'), array('bani')),
+      'RUB' => array(array('Russian Federation rouble'), array('kopiejka')),
+      'SEK' => array(array('Swedish krona'), array('oere')),
+      'SIT' => array(array('Tolar'), array('stotinia')),
+      'SKK' => array(array('Slovak koruna'), array()),
+      'TRL' => array(array('lira'), array('kuruþ')),
+      'UAH' => array(array('hryvna'), array('cent')),
+      'USD' => array(array('dollar'), array('cent')),
+      'YUM' => array(array('dinars'), array('para')),
+      'ZAR' => array(array('rand'), array('cent'))
+    );
+
+    /**
+     * The default currency name
+     * @var string
+     * @access public
+     */
+    var $def_currency = 'GBP'; // English pound
+
     // }}}
     // {{{ _toWords()
 
     /**
      * Converts a number to its word representation
-     * in Donald Knuth system, in English language.
+     * in British English language
      *
      * @param integer $num       An integer between -infinity and infinity inclusive :)
      *                           that need to be converted to words
@@ -311,4 +367,66 @@ class Numbers_Words_Locale_en_100 extends Numbers_Words
         return $ret;
     }
     // }}}
+    // {{{ toCurrencyWords()
+
+    /**
+     * Converts a currency value to its word representation
+     * (with monetary units) in English language
+     *
+     * @param integer $int_curr         An international currency symbol
+     *                                  as defined by the ISO 4217 standard (three characters)
+     * @param integer $decimal          A money total amount without fraction part (e.g. amount of dollars)
+     * @param integer $fraction         Fractional part of the money amount (e.g. amount of cents)
+     *                                  Optional. Defaults to false.
+     * @param integer $convert_fraction Convert fraction to words (left as numeric if set to false).
+     *                                  Optional. Defaults to true.
+     *
+     * @return string  The corresponding word representation for the currency
+     *
+     * @access public
+     * @author Piotr Klaban <makler@man.torun.pl>
+     * @since  Numbers_Words 0.13.1
+     */
+    function toCurrencyWords($int_curr, $decimal, $fraction = false, $convert_fraction = true)
+    {
+        $int_curr = strtoupper($int_curr);
+        if (!isset($this->_currency_names[$int_curr])) {
+            $int_curr = $this->def_currency;
+        }
+        $curr_names = $this->_currency_names[$int_curr];
+
+        $ret = trim($this->_toWords($decimal));
+        $lev = ($decimal == 1) ? 0 : 1;
+        if ($lev > 0) {
+            if (count($curr_names[0]) > 1) {
+                $ret .= $this->_sep . $curr_names[0][$lev];
+            } else {
+                $ret .= $this->_sep . $curr_names[0][0] . 's';
+            }
+        } else {
+            $ret .= $this->_sep . $curr_names[0][0];
+        }
+
+        if ($fraction !== false) {
+            if ($convert_fraction) {
+                $ret .= $this->_sep . trim($this->_toWords($fraction));
+            } else {
+                $ret .= $this->_sep . $fraction;
+            }
+            $lev = ($fraction == 1) ? 0 : 1;
+            if ($lev > 0) {
+                if (count($curr_names[1]) > 1) {
+                    $ret .= $this->_sep . $curr_names[1][$lev];
+                } else {
+                    $ret .= $this->_sep . $curr_names[1][0] . 's';
+                }
+            } else {
+                $ret .= $this->_sep . $curr_names[1][0];
+            }
+        }
+        return $ret;
+    }
+    // }}}
+
+
 }

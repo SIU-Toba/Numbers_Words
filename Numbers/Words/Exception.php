@@ -1,2 +1,4 @@
 <?php
-class Numbers_Words_Exception extends Exception {}
+namespace Numbers\Words;
+
+class Exception extends \Exception {}

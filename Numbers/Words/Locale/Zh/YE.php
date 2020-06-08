@@ -23,19 +23,19 @@
  */
 
 /**
- * Class for translating numbers into Simplified Chinese.
+ * Class for translating numbers into Traditional Chinese.
  *
  * @author Ben NG
  * @package Numbers_Words
  */
 
-/**
- * Include needed files
- */
-require_once "Numbers/Words.php";
+
+namespace Numbers\Words\Locale\Zh;
+
+use Numbers\Words as Numbers_Words;
 
 /**
- * Class for translating numbers into Simplified Chinese.
+ * Class for translating numbers into Traditional Chinese.
  *
  * @category Numbers
  * @package  Numbers_Words
@@ -43,7 +43,7 @@ require_once "Numbers/Words.php";
  * @license  PHP 3.01 http://www.php.net/license/3_01.txt
  * @link	 http://pear.php.net/package/Numbers_Words
  */
-class Numbers_Words_Locale_zh_CH extends Numbers_Words
+class Numbers_Words_Locale_zh_YE extends Numbers_Words
 {
 
 	// {{{ properties
@@ -53,28 +53,28 @@ class Numbers_Words_Locale_zh_CH extends Numbers_Words
 	 * @var string
 	 * @access public
 	 */
-	var $locale = 'zh_CH';
+	var $locale = 'zh_YE';
 
 	/**
 	 * Language name in English
 	 * @var string
 	 * @access public
 	 */
-	var $lang = 'Simplified Chinese';
+	var $lang = 'Traditional Chinese (Yellow Emperor System)';
 
 	/**
 	 * Native language name
 	 * @var string
 	 * @access public
 	 */
-	var $lang_native = 'Simplified Chinese';
+	var $lang_native = 'Traditional Chinese (Yellow Emperor System)';
 
 	/**
 	 * The word for the minus sign
 	 * @var string
 	 * @access private
 	 */
-	var $_minus = '负'; // minus sign
+	var $_minus = '負'; // minus sign
 
 	/**
 	 * The sufixes for exponents (singular and plural)
@@ -85,18 +85,17 @@ class Numbers_Words_Locale_zh_CH extends Numbers_Words
 	 */
 	var $_exponent = array(
 		0 => array(''),
-		4 => array('万'),
-		8 => array('亿'),
+		4 => array('萬'),
+		8 => array('億'),
 	   12 => array('兆'),
-	//	16 => array('京'),
-	//	20 => array('垓'),
-	//	24 => array('秭'),
-	//	28 => array('穰'),
-	//	32 => array('溝'),
-	//	36 => array('澗'),
-	//	40 => array('正'),
-	//	44 => array('載'),
-	//	48 => array('極')
+		16 => array('京'),
+		20 => array('垓'),
+		24 => array('秭'),
+		28 => array('穰'),
+		32 => array('溝'),
+		36 => array('澗'),
+		40 => array('正'),
+		44 => array('載')
 		);
 
 	/**
@@ -265,7 +264,7 @@ class Numbers_Words_Locale_zh_CH extends Numbers_Words
             }
         }
         // the 'zero' will be added after the exponent
-        if ($th == 0 && strlen($num) == 4) $ret .= $this->_digits[0];
+		if ($th == 0 && strlen($num) == 4) $ret .= '零';
 
 		// the 'zero' will be added if h and d are non-zero but t is zero
         if ($h) {

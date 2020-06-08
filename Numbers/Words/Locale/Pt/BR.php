@@ -22,10 +22,9 @@
  * @link     http://pear.php.net/package/Numbers_Words
  */
 
-/**
- * Include needed files
- */
-require_once "Numbers/Words.php";
+namespace Numbers\Words\Locale\Pt;
+
+use Numbers\Words as Numbers_Words;
 
 /**
  * Class for translating numbers into Brazilian Portuguese. This class complies

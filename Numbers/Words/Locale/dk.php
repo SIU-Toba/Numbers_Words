@@ -29,10 +29,9 @@
  * @package Numbers_Words
  */
 
-/**
- * Include needed files
- */
-require_once "Numbers/Words.php";
+namespace Numbers\Words\Locale;
+
+use Numbers\Words as Numbers_Words;
 
 /**
  * Class for translating numbers into Danish.

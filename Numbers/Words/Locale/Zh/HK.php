@@ -23,19 +23,19 @@
  */
 
 /**
- * Class for translating numbers into Traditional Chinese.
+ * Class for translating numbers into Traditional Chinese for everyday writing.
  *
  * @author Ben NG
  * @package Numbers_Words
  */
 
-/**
- * Include needed files
- */
-require_once "Numbers/Words.php";
+
+namespace Numbers\Words\Locale\Zh;
+
+use Numbers\Words as Numbers_Words;
 
 /**
- * Class for translating numbers into Traditional Chinese.
+ * Class for translating numbers into Traditional Chinese for everyday writing.
  *
  * @category Numbers
  * @package  Numbers_Words
@@ -43,7 +43,7 @@ require_once "Numbers/Words.php";
  * @license  PHP 3.01 http://www.php.net/license/3_01.txt
  * @link	 http://pear.php.net/package/Numbers_Words
  */
-class Numbers_Words_Locale_zh_TW extends Numbers_Words
+class Numbers_Words_Locale_zh_HK extends Numbers_Words
 {
 
 	// {{{ properties
@@ -53,7 +53,7 @@ class Numbers_Words_Locale_zh_TW extends Numbers_Words
 	 * @var string
 	 * @access public
 	 */
-	var $locale = 'zh_TW';
+	var $locale = 'zh_HK';
 
 	/**
 	 * Language name in English
@@ -264,7 +264,6 @@ class Numbers_Words_Locale_zh_TW extends Numbers_Words
                 $ret .= $this->_digits[0];
             }
         }
-        // the 'zero' will be added after the exponent
 		if ($th == 0 && strlen($num) == 4) $ret .= '零';
 
 		// the 'zero' will be added if h and d are non-zero but t is zero

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Numbers_Words
  *
@@ -24,8 +25,9 @@
  * @link     http://pear.php.net/package/Numbers_Words
  */
 
-// {{{ Numbers_Words
-require_once 'Numbers/Words/Exception.php';
+namespace Numbers;
+
+use Numbers\Words\Exception as Numbers_Words_Exception;
 
 /**
  * The Numbers_Words class provides method to convert arabic numerals to words.
@@ -38,7 +40,7 @@ require_once 'Numbers/Words/Exception.php';
  * @since    PHP 4.2.3
  * @access   public
  */
-class Numbers_Words
+class Words
 {
     // {{{ constants
 

@@ -9,8 +9,10 @@
 /**
  * Include needed files
  */
-require_once "Numbers/Words.php";
-require_once "Numbers/Words/Locale/ru.php";
+
+namespace Numbers\Words\Locale;
+
+use Numbers\Words\Locale\ru as Numbers_Words_Locale_ru;
 
 /**
  * Class for translating numbers into Russian.
