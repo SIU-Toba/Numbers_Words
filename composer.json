@@ -39,8 +39,11 @@
     },
     "autoload": {
         "psr-0": {
-            "Numbers": "./"
-        }
+            "Numbers\\": "./"
+        }, 
+		"psr-4":{ 
+			"Numbers\\": "Numbers/"
+		}		
     },
     "include-path": [
         "./"
